@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio tracker delivery workflow</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    html, body { margin: 0; background: #0f1319; }
+    svg { display: block; }
+    text { font-family: 'Space Grotesk', system-ui, sans-serif; fill: #eef1f6; }
+    .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+    .title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+    .sub { font-size: 13px; fill: #a3adbb; }
+    .tag { font-size: 12px; letter-spacing: 0.08em; }
+    .check { font-size: 13px; font-weight: 500; text-anchor: middle; }
+    .proof { font-size: 12px; fill: #6e7a8a; text-anchor: middle; }
+    .chip { fill: #171d26; stroke: #2b3442; }
+    .chiptext { font-size: 13px; fill: #a3adbb; text-anchor: middle; }
+    .box { fill: #171d26; stroke: #2b3442; }
+    .flow { stroke: #3d4757; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .drop { stroke: #2b3442; stroke-width: 1.2; }
+    .gate { fill: #0f1319; stroke: #199e70; stroke-width: 1.6; }
+    .tick { stroke: #199e70; stroke-width: 1.8; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+</head>
+<body>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="How the dividend portfolio tracker was built: spec, plan, subagent build loop, branch review, live run on real holdings, with a check after every stage">
+  <rect width="1200" height="630" fill="#0f1319"/>
+
+  <!-- header -->
+  <text x="48" y="56" class="mono" style="font-size: 13px; letter-spacing: 0.18em; fill: #199e70;">AGENTIC PORTFOLIO ANALYST · HOW IT WAS BUILT</text>
+  <text x="48" y="98" style="font-size: 34px; font-weight: 700; letter-spacing: -0.02em;">A dividend portfolio tracker, built by subagents.</text>
+  <text x="48" y="128" style="font-size: 17px; fill: #a3adbb;">Prices, currency conversion to EUR, gain/loss and Google Sheets sync, delivered in 14 tasks with a check after every step.</text>
+
+  <!-- 01 spec -->
+  <rect class="box" x="48" y="196" width="138" height="110" rx="8"/>
+  <rect x="48" y="196" width="3" height="110" fill="#3987e5"/>
+  <text x="64" y="222" class="mono tag" style="fill: #3987e5;">01</text>
+  <text x="64" y="250" class="title">Spec</text>
+  <text x="64" y="274" class="sub">Holdings valued</text>
+  <text x="64" y="291" class="sub">in EUR, daily</text>
+
+  <!-- 02 plan -->
+  <rect class="box" x="212" y="196" width="138" height="110" rx="8"/>
+  <rect x="212" y="196" width="3" height="110" fill="#3987e5"/>
+  <text x="228" y="222" class="mono tag" style="fill: #3987e5;">02</text>
+  <text x="228" y="250" class="title">Plan</text>
+  <text x="228" y="274" class="sub">14 tasks: fetch,</text>
+  <text x="228" y="291" class="sub">compute, sync</text>
+
+  <!-- 03 per-task loop -->
+  <rect x="376" y="166" width="430" height="160" rx="12" fill="none" stroke="#2b3442" stroke-dasharray="5 5"/>
+  <rect x="394" y="156" width="176" height="20" fill="#0f1319"/>
+  <text x="404" y="170" class="mono tag" style="fill: #6e7a8a;">03 · PER TASK  ×14</text>
+
+  <rect class="box" x="396" y="196" width="165" height="110" rx="8"/>
+  <rect x="396" y="196" width="3" height="110" fill="#199e70"/>
+  <text x="412" y="222" class="mono tag" style="fill: #199e70;">SUBAGENT</text>
+  <text x="412" y="250" class="title">Implementer</text>
+  <text x="412" y="274" class="sub">One tool per task,</text>
+  <text x="412" y="291" class="sub">failing test first</text>
+
+  <rect class="box" x="621" y="196" width="165" height="110" rx="8"/>
+  <rect x="621" y="196" width="3" height="110" fill="#c98500"/>
+  <text x="637" y="222" class="mono tag" style="fill: #c98500;">SUBAGENT</text>
+  <text x="637" y="250" class="title">Reviewer</text>
+  <text x="637" y="274" class="sub">Sees brief and diff,</text>
+  <text x="637" y="291" class="sub">not the reasoning</text>
+
+  <!-- diff forward, fix back -->
+  <path class="flow" d="M568 236H613M608 231l5 5-5 5"/>
+  <text x="591" y="226" class="mono" style="font-size: 11px; fill: #6e7a8a; text-anchor: middle;">diff</text>
+  <path class="flow" style="stroke: #c98500;" d="M614 268H569M574 263l-5 5 5 5"/>
+  <text x="591" y="288" class="mono" style="font-size: 11px; fill: #c98500; text-anchor: middle;">fix</text>
+
+  <!-- 04 branch review -->
+  <rect class="box" x="832" y="196" width="150" height="110" rx="8"/>
+  <rect x="832" y="196" width="3" height="110" fill="#e66767"/>
+  <text x="848" y="222" class="mono tag" style="fill: #e66767;">04</text>
+  <text x="848" y="250" class="title">Branch review</text>
+  <text x="848" y="274" class="sub">All 17 commits,</text>
+  <text x="848" y="291" class="sub">read together</text>
+
+  <!-- 05 live run -->
+  <rect class="box" x="1008" y="196" width="144" height="110" rx="8"/>
+  <rect x="1008" y="196" width="3" height="110" fill="#199e70"/>
+  <text x="1024" y="222" class="mono tag" style="fill: #199e70;">05</text>
+  <text x="1024" y="250" class="title">Live run</text>
+  <text x="1024" y="274" class="sub">Real holdings to</text>
+  <text x="1024" y="291" class="sub">Sheet and Doc</text>
+
+  <!-- stage arrows -->
+  <path class="flow" d="M191 251h16M202 246l5 5-5 5"/>
+  <path class="flow" d="M355 251h16M366 246l5 5-5 5"/>
+  <path class="flow" d="M811 251h16M822 246l5 5-5 5"/>
+  <path class="flow" d="M987 251h16M998 246l5 5-5 5"/>
+
+  <!-- checks rail: the check, then what it protected in this project -->
+  <line x1="48" y1="372" x2="1152" y2="372" stroke="#2b3442" stroke-width="1.2"/>
+  <g>
+    <line class="drop" x1="117" y1="306" x2="117" y2="361"/>
+    <circle class="gate" cx="117" cy="372" r="11"/><path class="tick" d="M112 372l3.5 3.5 6.5-7"/>
+    <text x="117" y="406" class="check">Human sign-off</text>
+    <text x="117" y="426" class="proof">Cost basis stays</text>
+    <text x="117" y="442" class="proof">hand-maintained</text>
+
+    <line class="drop" x1="281" y1="306" x2="281" y2="361"/>
+    <circle class="gate" cx="281" cy="372" r="11"/><path class="tick" d="M276 372l3.5 3.5 6.5-7"/>
+    <text x="281" y="406" class="check">Human sign-off</text>
+    <text x="281" y="426" class="proof">Tests never touch</text>
+    <text x="281" y="442" class="proof">the real portfolio</text>
+
+    <line class="drop" x1="478" y1="306" x2="478" y2="361"/>
+    <circle class="gate" cx="478" cy="372" r="11"/><path class="tick" d="M473 372l3.5 3.5 6.5-7"/>
+    <text x="478" y="406" class="check">Test fails, then passes</text>
+    <text x="478" y="426" class="proof">EUR conversion, gain/loss</text>
+    <text x="478" y="442" class="proof">and sync, each under test</text>
+
+    <line class="drop" x1="703" y1="306" x2="703" y2="361"/>
+    <circle class="gate" cx="703" cy="372" r="11"/><path class="tick" d="M698 372l3.5 3.5 6.5-7"/>
+    <text x="703" y="406" class="check">Independent review</text>
+    <text x="703" y="426" class="proof">Yahoo response validated</text>
+    <text x="703" y="442" class="proof">before a snapshot is saved</text>
+
+    <line class="drop" x1="907" y1="306" x2="907" y2="361"/>
+    <circle class="gate" cx="907" cy="372" r="11"/><path class="tick" d="M902 372l3.5 3.5 6.5-7"/>
+    <text x="907" y="406" class="check">9 issues caught</text>
+    <text x="907" y="426" class="proof">A failed fetch no longer</text>
+    <text x="907" y="442" class="proof">exits as success</text>
+
+    <line class="drop" x1="1080" y1="306" x2="1080" y2="361"/>
+    <circle class="gate" cx="1080" cy="372" r="11"/><path class="tick" d="M1075 372l3.5 3.5 6.5-7"/>
+    <text x="1080" y="406" class="check">Works on real data</text>
+    <text x="1080" y="426" class="proof">Gain/loss checked on</text>
+    <text x="1080" y="442" class="proof">the real holdings</text>
+  </g>
+
+  <!-- what the tasks produced -->
+  <line x1="48" y1="480" x2="1152" y2="480" stroke="#2b3442"/>
+  <text x="48" y="514" class="mono tag" style="fill: #6e7a8a;">WHAT THE 14 TASKS PRODUCED</text>
+  <text x="1152" y="514" class="mono tag" style="fill: #6e7a8a; text-anchor: end;">35 SUBAGENTS · 17 COMMITS · 6 CHECKS</text>
+  <g class="mono">
+    <rect class="chip" x="48" y="532" width="118" height="34" rx="6"/><text x="107" y="554" class="chiptext">fetch_prices</text>
+    <rect class="chip" x="174" y="532" width="102" height="34" rx="6"/><text x="225" y="554" class="chiptext">fetch_news</text>
+    <rect class="chip" x="284" y="532" width="164" height="34" rx="6"/><text x="366" y="554" class="chiptext">fetch_fundamentals</text>
+    <rect class="chip" x="456" y="532" width="125" height="34" rx="6"/><text x="518.5" y="554" class="chiptext">fetch_fx_rate</text>
+    <rect class="chip" x="589" y="532" width="141" height="34" rx="6"/><text x="659.5" y="554" class="chiptext">record_snapshot</text>
+    <rect class="chip" x="738" y="532" width="157" height="34" rx="6"/><text x="816.5" y="554" class="chiptext">sync_google_sheet</text>
+    <rect class="chip" x="903" y="532" width="149" height="34" rx="6"/><text x="977.5" y="554" class="chiptext">sync_summary_doc</text>
+  </g>
+</svg>
+</body>
+</html>

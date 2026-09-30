@@ -1,0 +1,28 @@
+# Example portfolio (made-up figures). Copy to data/portfolio.yaml and edit.
+# avg_cost_local is your average cost per share in the holding's own currency.
+holdings:
+  - ticker: MCD
+    company: McDonald's Corp
+    isin: US5801351017
+    exchange: NYSE
+    currency: USD
+    shares: 10
+    avg_cost_local: 60.00
+    notes: ""
+  - ticker: ABT
+    company: Abbott Laboratories
+    isin: US0028241000
+    exchange: NYSE
+    currency: USD
+    shares: 4
+    avg_cost_local: 150.00
+    notes: ""
+  - ticker: NOVN.SW
+    company: Novartis AG
+    isin: CH0012005267
+    exchange: SIX
+    currency: CHF
+    shares: 5
+    avg_cost_local: 95.00
+    notes: "Yahoo Finance needs the .SW suffix for the Swiss listing."
+etfs: []
